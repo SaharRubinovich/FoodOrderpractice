@@ -30,6 +30,7 @@ public class JWTutil {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userDetails.getId());
         claims.put("userType", userDetails.getUserType());
+        claims.put("userName", userDetails.getUserName());
         return "Bearer " + createToken(claims, userDetails.getUserEmail());
     }
 
@@ -73,6 +74,7 @@ public class JWTutil {
         UserDetails userDetails = new UserDetails();
         userDetails.setId((Long) claims.get("userId"));
         userDetails.setUserType((String) claims.get("userType"));
+        userDetails.setUserName((String) claims.get("userName"));
         userDetails.setUserEmail(claims.getSubject());
         return generateToken(userDetails);
     }
@@ -131,6 +133,7 @@ public class JWTutil {
         userDetails.setUserEmail(claims.getSubject());
         userDetails.setId((int)claims.get("userId"));
         userDetails.setUserType((String) claims.get("userType"));
+        userDetails.setUserName((String) claims.get("userName"));
         return generateToken(userDetails);
     }
 }
