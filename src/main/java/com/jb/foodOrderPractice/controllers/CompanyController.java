@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "company")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CompanyController {
     private CompanyService companyService;
     String newToken;
